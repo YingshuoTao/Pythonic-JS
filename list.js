@@ -1,5 +1,5 @@
 function list(iterable) {
-    return new Proxy(Array.from(iterable), {
+    return new Proxy(iterable ? Array.from(iterable) : new Array(), {
         get (arr, prop) {
             if (typeof prop === 'string') {
                 if (Number(prop) < 0) prop = arr.length + Number(prop)
