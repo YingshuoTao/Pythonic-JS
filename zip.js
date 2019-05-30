@@ -1,5 +1,9 @@
 function zip(...args) {
-    let iterators = args.map(arg => arg[Symbol.iterator] ? arg[Symbol.iterator]() : { next () { return { value: undefined, done: true } } })
+    if (args.length === 0 || args.some(arg => !arg[Symbol.iterator])) return {
+        [Symbol.iterator] () { return this },
+        next () { return { value: undefined, done: true } }
+    }
+    let iterators = args.map(arg => arg[Symbol.iterator]())
     return {
         [Symbol.iterator] () { return this },
         next () {
