@@ -1,5 +1,5 @@
 function range(...args) {
-    args = args.slice(0,3).map(arg => Number.isNaN(Number.parseInt(arg)) ? 0 : Number.parseInt(arg))
+    args = args.slice(0,3).map(arg => Number.parseInt(arg) || 0)
     let [start = 0, end, step = 1] = args
     if (end === undefined) [start, end] = [0, start]
     if (step === 0) step = 1 
