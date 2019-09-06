@@ -1,11 +1,11 @@
 # Pythonic-JS
-#### Python风格的Javascript实用工具
-&nbsp;
+### Python风格的Javascript实用工具
 
 #### range.js
+##### Python range风格的迭代器
 > * range(stop) -> @@Iterator
 > * range(start, stop[, step]) -> @@Iterator
-###### *Python range风格的迭代器*
+
 ```javascript
 // 传统的JS整数数列生成方法
 var arr = new Array()
@@ -32,11 +32,11 @@ Array.from(range(0, 2, 0))  // [0, 1, 2]  /* 步长为0时默认将步长设为1
 Array.from(range(1.5, 5.5, 2.1))  // [1, 3]  /* 接受非整数参数时默认去除小数部分 */
 Array.from(range('py', 5, null))  // [0, 1, 2, 3, 4]  /* 接受非数字参数会采用Number.parseInt转化参数 */
 ```
-&nbsp;
 
 #### enumerate.js
+##### 迭代器枚举工具
 > * enumerate(@@Iterator, start) -> @@iterator
-###### *迭代器枚举工具*
+
 ```javascript
 // 与Python类似，enumerate将递增的索引植入传入的可迭代对象，并返回枚举迭代器
 enumerate(['a', 'b', 'c'])  // {next: ƒ, Symbol(Symbol.iterator): ƒ}
@@ -47,11 +47,11 @@ Array.from(enumerate(range(5), -2))  // [[-2, 0], [-1, 1], [0, 2], [1, 3], [2, 4
 Array.from(enumerate(42, null))  // []  /* 参数为空或不可迭代时不会报错，但返回的迭代器会立即耗尽 */
 Array.from(enumerate(range(3), 3.1416))  // [[3, 0], [4, 1], [5, 2]]  /* 非整数的起始索引会被Number.parseInt尝试转化为整数，若无效则默认为0 */
 ```
-&nbsp;
 
 #### zip.js
+##### 迭代器组合工具
 > * zip(...@@Iterator) -> @@iterator
-###### *迭代器组合工具*
+
 ```javascript
 // 与Python类似，zip接受一系列可迭代对象，将其组合并返回一个迭代器
 zip('ABC', [1, 2, 3])  // {next: ƒ, Symbol(Symbol.iterator): ƒ}
@@ -65,11 +65,11 @@ Array.from(zip(range(2, 5), 'Pythonic', 'Javascript'))  // [[2, "P", "J"], [3, "
 zip()  // {next: ƒ, Symbol(Symbol.iterator): ƒ}  /* 参数为空不会报错 */
 Array.from(zip(range(10), 42, 'hello'))  // []  /* 数字42不可迭代，返回的迭代器立即耗尽转化为空数组 */
 ```
-&nbsp;
 
 #### list.js
+##### Python list风格的类数组
 > * list(@@Iterator) -> @@Proxy
-###### *Python list风格的类数组*
+
 ```javascript
 // JS原生数组的不良行为
 var arr = new Array()
